@@ -1,6 +1,6 @@
 ## Curso FrontEnd
 
- - Revisão de Conteúdo
+- Revisão de Conteúdo
  - Html
  - Css
  - Responsividade
