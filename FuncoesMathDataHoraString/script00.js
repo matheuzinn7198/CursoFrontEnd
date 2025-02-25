@@ -1,4 +1,4 @@
-//Funções Mateáticas
+//Funções Matemáticas
 
 //SQRT e POW (Quadrado e Potencia)
 
