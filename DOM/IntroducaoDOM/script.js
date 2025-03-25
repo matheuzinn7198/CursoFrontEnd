@@ -1,29 +1,29 @@
 //Script de Manipulação DOM
 
-//getElementById -> variavel
+//getElementById -> variável Simples
 let titulo = document.getElementById("titulo");//html -> id
 console.log(titulo); // mostra no console as informações da id
 titulo.innerText = "Outro Titulo"; // modificar o conteúdo da id
 
-//getElementByTagName -> variavel Vetor(Array)
+//getElementByTagName -> variável Vetor(Array)
 let paragrafo = document.getElementsByTagName("p"); //html -> "p"
 // modificar elemento
 paragrafo[0].innerText = "Exemplo de Parágrafo Modificado por DOM";
 // modificar style do elemento
 paragrafo[1].style.color = "red";
 
-//getElementsByClassName -> variavel Vetor(Array)
+//getElementsByClassName -> variável Vetor(Array)
 let descricao = document.getElementsByClassName("descricao");
 for(let i = 0; i<descricao.length; i++){
     descricao[i].style.color = "blue";
 }
 
-//querySelector -> variavel simples -> seleciona o 1°
+//querySelector -> variável simples -> seleciona o 1°
 let p = document.querySelector("p");
 //modificação de font
 p.style.fontWeight = "bold";
 
-//querySelectorAll -> variavel Vetor(Array) -> Selecionar Todos
+//querySelectorAll -> variável Vetor(Array) -> Selecionar Todos
 let descricaoAll = document.querySelectorAll(".descricao");
 descricaoAll.forEach(element => {
     element.style.fontWeight = "bold";
