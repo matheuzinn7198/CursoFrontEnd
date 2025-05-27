@@ -9,16 +9,24 @@ import { DadosService } from 'src/app/services/dados.service';
 })
 export class ClienteFormComponent {
   nome: string = "";
+  quantidadeClientes: number = 0; // nova propriedade
 
-  constructor(private dadosService: DadosService){}
+  constructor(private dadosService: DadosService){
+    this.atualizarQuantidadeClientes();
+  }
 
   salvarCliente(){
     const cliente = new Cliente(
-      this.dadosService.getClientes().length+1, //id -> quantidade de clientes na lista +1
-      this.nome //nome
+      this.dadosService.getClientes().length+1,
+      this.nome
     );
     this.dadosService.adicionarClientes(cliente);
     this.nome="";
+    this.atualizarQuantidadeClientes();
+    alert(`Cliente Adicionado com Sucesso! Agora há ${this.quantidadeClientes} clientes.`);
   }
 
+  atualizarQuantidadeClientes() {
+    this.quantidadeClientes = this.dadosService.getClientes().length;
+  }
 }
