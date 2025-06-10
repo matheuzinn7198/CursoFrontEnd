@@ -1,4 +1,4 @@
-//arquivo respomsável pela modelagem 
+//arquivo responsável pela modelagem 
 export class Vaga{
     //atributos
     // private _id: number;
