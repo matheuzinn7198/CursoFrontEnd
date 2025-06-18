@@ -1,1 +1,15 @@
-<p>curriculo-list works!</p>
+<div *ngFor="let curriculo of curriculos">
+  <mat-card>
+    <mat-card-title>{{ curriculo.nome }}</mat-card-title>
+    <mat-card-content>
+      <p>Email: {{ curriculo.email }}</p>
+      <p>Telefone: {{ curriculo.telefone }}</p>
+      <p>Experiência: {{ curriculo.experiencia }}</p>
+      <p>Formação: {{ curriculo.formacao }}</p>
+      <p>Habilidades: {{ curriculo.habilidades }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="onDelete(curriculo.id)">Excluir</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

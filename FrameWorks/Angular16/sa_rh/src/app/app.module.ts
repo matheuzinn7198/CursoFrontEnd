@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { CurriculoFormComponent } from './views/curriculo-form/curriculo-form.component';
 import { CurriculoListComponent } from './views/curriculo-list/curriculo-list.component';
 import { CurriculoDetailComponent } from './views/curriculo-detail/curriculo-detail.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -26,13 +29,16 @@ import { CurriculoDetailComponent } from './views/curriculo-detail/curriculo-det
     PainelVagasComponent,
     CurriculoFormComponent,
     CurriculoListComponent,
-    CurriculoDetailComponent
+    CurriculoDetailComponent,
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
