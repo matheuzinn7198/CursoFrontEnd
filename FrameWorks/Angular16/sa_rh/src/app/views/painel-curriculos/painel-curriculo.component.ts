@@ -5,8 +5,8 @@ import { Curriculo } from 'src/app/models/curriculo.model';
 
 @Component({
   selector: 'app-painel-curriculo',
-  templateUrl: './painel-curriculos.component.html',
-  styleUrls: ['./painel-curriculos.component.scss']
+  templateUrl: './painel-curriculo.component.html',
+  styleUrls: ['./painel-curriculo.component.scss']
 })
 export class PainelCurriculoComponent implements OnInit {
   public curriculo: Curriculo = new Curriculo(0, '', 0, '', '', '');

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PainelCurriculoComponent } from './painel-curriculos.component';
+import { PainelCurriculoComponent } from './painel-curriculo.component';
 
 
 
@@ -10,7 +10,7 @@ import { PainelCurriculoComponent } from './painel-curriculos.component';
     TestBed.configureTestingModule({
       declarations: [ PainelCurriculoComponent ],
     });
-    fixture = TestBed.createComponent(PainelCurriculoComponent); 
+    fixture = TestBed.createComponent(PainelCurriculoComponent); ;
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
