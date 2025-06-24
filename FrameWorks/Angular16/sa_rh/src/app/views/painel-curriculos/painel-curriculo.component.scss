@@ -7,7 +7,6 @@ $sucesso: #28a745;
 $alerta: #dc3545;
 $aviso: #ffff00;
 
-
 *{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -20,7 +19,7 @@ h2 {
 
 form{
   max-width: 600px;
-  margin: auto 0;
+  margin: 0 auto;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
@@ -82,50 +81,67 @@ form{
 
 section {
   max-width: 1300px;
-  margin: 10px auto;
-  padding: 1rem;
+  margin: 24px auto 10px auto;
+  padding: 2rem 2.5rem;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   overflow-x: auto;
+  transition: box-shadow 0.3s;
 
   .table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    font-size: 0.8rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 2rem;
+    font-size: 1rem;
+    background: transparent;
 
-    th {
-      padding: 12px;
+    th, td {
+      padding: 14px 12px;
       text-align: left;
       border-bottom: 1px solid #aaa;
       vertical-align: middle;
       color: #555;
+      transition: background 0.2s;
+    }
+
+    th {
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
     }
 
     thead {
       background-color: #999;
-      th{
+      th {
         color: #222;
         font-weight: bold;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
       }
     }
 
-    tbody{
-      tr{
-        &:hover{
-          background-color: #999;
+    tbody {
+      tr {
+        transition: background 0.2s;
+        &:hover {
+          background-color: #eaeaea;
         }
       }
-      .btn-listar{
+      .btn-listar {
         border: none;
         background-color: $secundaria;
-        padding: 5px;
+        padding: 7px 16px;
         cursor: pointer;
-        border-radius: 5px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.07);
 
         &:hover {
           background-color: darken($color: $aviso, $amount: 10%);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
       }
     }

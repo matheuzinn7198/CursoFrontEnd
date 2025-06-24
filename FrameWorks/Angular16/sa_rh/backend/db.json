@@ -1,37 +1,21 @@
 {
   "vagas": [
     {
-      "id": "4",
-      "nome": "44",
-      "foto": "4444",
-      "descricao": "44",
-      "salario": "4444"
+      "id": "1865",
+      "nome": "Gerente ",
+      "foto": "",
+      "descricao": "Ter noção kkkk",
+      "salario": "10.000"
     }
   ],
   "curriculos": [
     {
-      "nome": "Nome...",
-      "idade": "",
-      "email": "",
-      "experiencias": "",
-      "habilidades": "",
-      "id": "f64a"
-    },
-    {
-      "id": "3",
-      "nome": "dsa",
-      "idade": "110000",
-      "linkedin": "das",
-      "github": "dsa",
-      "experiencia": "asd"
-    },
-    {
-      "id": "0eee",
-      "nome": "dds",
-      "idade": "d",
-      "linkedin": "ddd",
-      "github": "dde",
-      "experiencia": "ddd"
+      "id": "1589",
+      "nome": "Marco Antonio",
+      "idade": "17",
+      "linkedin": "marco404",
+      "github": "marquinhos_fullstack",
+      "experiencia": "experiente em todas as areas!!! 😎"
     }
   ]
 }

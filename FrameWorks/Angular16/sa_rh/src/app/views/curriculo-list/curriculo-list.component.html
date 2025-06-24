@@ -1,11 +1,13 @@
 <h3>Buscar Currículo por ID ou Nome</h3>
 
-<input
-  type="text"
-  [(ngModel)]="termoBusca"
-  placeholder="Digite um ID ou nome"
-/>
-<button (click)="buscar()">Buscar</button>
+<div class="form-barra">
+  <input
+    type="text"
+    [(ngModel)]="termoBusca"
+    placeholder="Digite um ID ou nome"
+  />
+  <button (click)="buscar()">Buscar</button>
+</div>
 
 <div *ngIf="resultados.length > 0">
   <h4>Resultado{{ resultados.length > 1 ? 's' : '' }}:</h4>
