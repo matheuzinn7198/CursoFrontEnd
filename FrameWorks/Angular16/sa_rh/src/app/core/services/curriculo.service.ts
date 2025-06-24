@@ -1,32 +1,45 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Curriculo } from 'src/app/models/curriculo.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurriculoService {
-  private baseUrl = 'http://localhost:3009/curriculos';
-
-  constructor(private http: HttpClient) {}
-
-  getCurriculos(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
+  private apiUrl = "http://localhost:3009/curriculos"; // endereço da Api
+  constructor(private http: HttpClient) {
+    
+  }
+  //criar os métodos para conexão com a apiREST
+  //get - obter a lista de curriculos
+  getCurriculos(): Observable<Curriculo[]> {
+    return this.http.get<Curriculo[]>(this.apiUrl); //conecta com a API para pegar os Dados
   }
 
-  getCurriculoById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  //post
+  postCurriculos(Curriculo:Curriculo): Observable<Curriculo[]>{
+    return this.http.post<Curriculo[]>(this.apiUrl,Curriculo);
+    // Observable -> rxjs => tradutor de json
   }
 
-  createCurriculo(curriculo: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl, curriculo);
+  //put
+  // nomeDoMétodo(parâmeetros)
+  putCurriculo(id: any, curriculo:Curriculo): Observable<Curriculo[]> { // coleção chave -> valor
+    // http://localhost:3001/vagas/XXXXX
+    const url = `${this.apiUrl}/${id}`; //construir a url join(apiUrl+id)
+    return this.http.put<Curriculo[]>(url, curriculo);
   }
 
-  updateCurriculo(curriculo: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${curriculo.id}`, curriculo);
+  //delete
+  deleteCurriculo(id:any): Observable<Curriculo[]>{
+    const url = this.apiUrl+"/"+id;
+    return this.http.delete<Curriculo[]>(url);
+  
   }
-
-  deleteCurriculo(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+getCurriculoById(id: number): Observable<Curriculo> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Curriculo>(url);
   }
 }

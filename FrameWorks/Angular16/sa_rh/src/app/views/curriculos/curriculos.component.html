@@ -1,8 +1,16 @@
-<h1>Área de Currículos</h1>
-
-<nav style="margin-bottom: 20px;">
-  <button mat-raised-button color="primary" routerLink="novo">Novo Currículo</button>
-  <button mat-raised-button color="accent" routerLink="">Ver Currículos</button>
-</nav>
-
-<router-outlet></router-outlet>
+<section class="listar-curriculos">
+  <!-- property do data binding *ngFor -->
+   <div *ngFor="let curriculo of curriculos">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Código do Curriculo: {{curriculo.id}}</h5>
+        <h5 class="card-title">Nome do Concorrente: {{curriculo.nome}}</h5>
+        <p class="card-text">Idade do Concorrente: {{curriculo.idade}}</p>
+        <p class="card-text">Linkedin: {{curriculo.linkedin}}</p>
+        <p class="card-text">Github: {{curriculo.github}}</p>
+        <p class="card-text">Experiência: {{curriculo.experiencia}}</p>
+      </div>
+    </div>
+   </div>
+</section>
+<div class="rodape"></div>
