@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
+//implements da interface (classe abstrata)
 export class AuthGuard implements CanActivate {
 
   constructor (private authService: AuthService, private router: Router){}
-
+  //método obrigatório da classe canActivate
   canActivate():boolean{
-    if (this.authService,estaAutenticado()){
+    if (this.authService.estaAutenticado()){
       return true;
     }
     this.router.navigate(["/login"]);
