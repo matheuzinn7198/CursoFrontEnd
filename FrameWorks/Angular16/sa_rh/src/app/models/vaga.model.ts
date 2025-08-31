@@ -19,11 +19,11 @@ export class Vaga{
 
     //JavaScript/TypeScript há uma forma de declarar os atributos e já fazer o construtor tudo de uma vez
     constructor(
-        private _id: number, 
-        private _nome: string, 
-        private _foto: string, 
-        private _descricao: string, 
-        private _salario: number
+        public _id: number, 
+        public _nome: string, 
+        public _foto: string, 
+        public _descricao: string, 
+        public _salario: number
     ){}
 
     //Criar os métodos de acesso publico (getters and setters)
