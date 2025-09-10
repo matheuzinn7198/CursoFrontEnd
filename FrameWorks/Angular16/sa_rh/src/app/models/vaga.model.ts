@@ -17,6 +17,7 @@ export class Vaga {
   //   this._salario = salario
   // }
 
+<<<<<<< HEAD
   //JavaScrip/TypeScrip há uma forma de declara os
   // atributos e já fazer o construtor tudo de uma vez
   constructor(
@@ -26,6 +27,16 @@ export class Vaga {
     public descricao: string,
     public salario: number
   ) {}
+=======
+    //JavaScript/TypeScript há uma forma de declarar os atributos e já fazer o construtor tudo de uma vez
+    constructor(
+        public _id: number, 
+        public _nome: string, 
+        public _foto: string, 
+        public _descricao: string, 
+        public _salario: number
+    ){}
+>>>>>>> 1ab1703770db0c801c17ddfb989feafec2c32271
 
 
   // Métodos de conversão de objetos
