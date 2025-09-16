@@ -28,8 +28,9 @@ const TarefaSchema: Schema<ITarefa> = new mongoose.Schema({
     }
 })
 
-//export do modelo
+//export do modelo ( tanto para enviar para o banco quanto para receber info do banco)
 
 const Tarefa: Model<ITarefa> = mongoose.models.Tarefa || mongoose.model<ITarefa>("Tarefa", TarefaSchema);
 
+// componente reutilizavel
 export default Tarefa;

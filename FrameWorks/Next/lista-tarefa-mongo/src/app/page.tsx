@@ -1,4 +1,5 @@
 "use client";
+import { updateTarefa } from "@/controllers/tarefaController";
 import { ITarefa } from "@/models/tarefa";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
@@ -6,10 +7,12 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 export default function Home(){
   //useState => armazenamento localStorage
+  //armazena as tarefas em um vetor
   const [tarefas, setTarefas] = useState<ITarefa[]>([]);
+  //armazena o texto no input (campo de texto da página)
   const [newTarefa, setNewTarefa] = useState<string>("");
 
-  //useEffect
+  //useEffect => permite atualizações da tela
   useEffect(()=>{
     //fazer o usseEffect no carregamento da tela inicial
     fetchTarefas(); //carregar todas as tarefas do BD
@@ -42,6 +45,8 @@ export default function Home(){
       if(data.success){//se resultado for ok
         setTarefas([...tarefas, data.data]);//adiciona a nova tarefa no vetor
         setNewTarefa("");//limpo o campo do input
+        //se quisesse carregar as tarefas do banco novamente
+        //fetchTarefas(); -server-side
       }
     } catch (error) {
       console.error(error);
@@ -49,7 +54,23 @@ export default function Home(){
   }
 
   //update de Tarefa
-  const atualizarTarefa = async () => {
+  const atualizarTarefa = async (id: string, statusTarefa: boolean) => {
+    try {
+      const resposta = await fetch(`/api/tarefas/${id}`, {
+        method: "PATCH",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({concluida:!statusTarefa})
+      });
+      const data = await resposta.json();
+      if(data.success){
+        //server-side
+        fetchTarefas
+        //setTarefas(tarefas.map(tarefa)=>
+        //(tarefa._id ===id ? data.data : tarefa))) //cliete-side
+      }
+    } catch (error) {
+      
+    }
   }
 
   //delete de Tarefa
@@ -69,7 +90,10 @@ export default function Home(){
       <ul>
         {tarefas.map((tarefa)=> (
           <li key={tarefa._id.toString()}>
-            
+            <input type="checkbox"
+            checked={tarefa.concluida}
+            onChange={()=>updateTarefa(tarefa._id.toString(), tarefa.concluida)} />
+            {tarefa.titulo}
           </li>
         ))}
       </ul>
