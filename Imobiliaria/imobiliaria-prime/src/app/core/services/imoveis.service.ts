@@ -1,49 +1,32 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImoveisService {
+  private apiUrl = 'http://localhost:3000/imoveis'; // JSON Server
 
-  private imoveis: any[] = []; // lista de imóveis em memória
+  constructor(private http: HttpClient) { }
 
-  constructor() {
-    // simulação: começa com alguns imóveis
-    this.imoveis = [
-      { id: 1, titulo: 'Apartamento no Centro', preco: 250000, corretorId: 1 },
-      { id: 2, titulo: 'Casa com quintal', preco: 400000, corretorId: 2 }
-    ];
+  getImoveis(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Buscar todos imóveis
-  listar() {
-    return this.imoveis;
+  getImovel(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  // Buscar imóvel pelo id
-  buscarPorId(id: number) {
-    return this.imoveis.find(imovel => imovel.id === id);
+  createImovel(imovel: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, imovel);
   }
 
-  // Criar um novo imóvel
-  criar(imovel: any) {
-    imovel.id = this.imoveis.length + 1; // gera id simples
-    this.imoveis.push(imovel);
-    return imovel;
+  updateImovel(id: number, imovel: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, imovel);
   }
 
-  // Atualizar imóvel
-  atualizar(id: number, dados: any) {
-    const index = this.imoveis.findIndex(i => i.id === id);
-    if (index !== -1) {
-      this.imoveis[index] = { ...this.imoveis[index], ...dados };
-      return this.imoveis[index];
-    }
-    return null;
-  }
-
-  // Excluir imóvel
-  excluir(id: number) {
-    this.imoveis = this.imoveis.filter(i => i.id !== id);
+  deleteImovel(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

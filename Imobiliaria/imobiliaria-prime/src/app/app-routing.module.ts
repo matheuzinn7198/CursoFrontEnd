@@ -1,41 +1,35 @@
-// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-// Guards
-import { AuthGuard } from './core/guards/auth.guard';
-import { CorretorGuard } from './core/guards/corretor.guard';
+import { HomeComponent } from './views/public/home/home.component';
+import { LoginComponent } from './views/public/login/login.component';
+import { MeusInteressesComponent } from './views/cliente/meus-interesses/meus-interesses.component';
+import { DashboardImoveisComponent } from './views/corretor/dashboard-imoveis/dashboard-imoveis.component';
+import { authGuard } from './core/guards/auth.guard';
+import { corretorGuard } from './core/guards/corretor.guard';
 
 const routes: Routes = [
-  // Área pública (home e busca de imóveis)
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+
+  // Rotas protegidas
   {
-    path: '',
-    loadChildren: () =>
-      import('./views/public/public.module').then(m => m.PublicModule)
+    path: 'cliente/meus-interesses',
+    component: MeusInteressesComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'corretor/dashboard',
+    component: DashboardImoveisComponent,
+    canActivate: [authGuard, corretorGuard],
   },
 
-  // Área do cliente (interesses)
-  {
-    path: 'cliente',
-    canActivate: [AuthGuard], // só acessa logado
-    loadChildren: () =>
-      import('./views/cliente/cliente.module').then(m => m.ClienteModule)
-  },
-
-  // Área do corretor (dashboard de imóveis)
-  {
-    path: 'corretor',
-    canActivate: [AuthGuard, CorretorGuard], // precisa estar logado e ser corretor
-    loadChildren: () =>
-      import('./views/corretor/corretor.module').then(m => m.CorretorModule)
-  },
-
-  // Se não encontrar rota, redireciona para home
-  { path: '**', redirectTo: '' }
+  // Rota fallback
+  { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

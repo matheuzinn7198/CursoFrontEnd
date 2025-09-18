@@ -1,23 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module'; // 👈 Agora vai funcionar!
 import { AppComponent } from './app.component';
+import { HomeComponent } from './views/public/home/home.component';
+import { LoginComponent } from './views/public/login/login.component';
 import { NavbarComponent } from './templates/components/navbar/navbar.component';
+import { CardImovelComponent } from './templates/components/card-imovel/card-imovel.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './templates/components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    // Navbar/Footer são standalone por padrão nas versões novas.
-    // Se não forem, adicione-os em "declarations" e remova daqui.
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
     NavbarComponent,
+    CardImovelComponent,
     FooterComponent
   ],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

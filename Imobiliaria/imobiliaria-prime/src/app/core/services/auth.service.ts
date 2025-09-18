@@ -1,56 +1,58 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private usuarioLogado: any = null;
+  private apiUrl = 'http://localhost:3000/usuarios';  // URL do json-server
 
-  private usuario: any = null; // guarda os dados do usuário logado
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
-
-  // Faz login simulando resposta de um backend
-  login(email: string, senha: string): boolean {
-    // aqui seria chamada a API real, mas vamos simular
-    if (email === 'corretor@teste.com' && senha === '123') {
-      this.usuario = { nome: 'João Corretor', tipo: 'corretor', token: 'abc123' };
-    } else if (email === 'cliente@teste.com' && senha === '123') {
-      this.usuario = { nome: 'Maria Cliente', tipo: 'cliente', token: 'xyz789' };
-    } else {
-      return false; // login inválido
-    }
-
-    // salva no localStorage pra não perder ao recarregar a página
-    localStorage.setItem('usuario', JSON.stringify(this.usuario));
-    return true;
+  // Função de login
+  login(email: string, senha: string): Observable<boolean> {
+    return new Observable<boolean>((observer) => {
+      this.http.get<any[]>(this.apiUrl).subscribe((usuarios) => {
+        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+        if (usuario) {
+          this.usuarioLogado = usuario;
+          localStorage.setItem('usuario', JSON.stringify(usuario));
+          observer.next(true);  // Login bem-sucedido
+        } else {
+          observer.next(false);  // Não encontrou o usuário
+        }
+        observer.complete();
+      });
+    });
   }
 
-  // Faz logout
+  // Função de logout
   logout() {
-    this.usuario = null;
+    this.usuarioLogado = null;
     localStorage.removeItem('usuario');
   }
 
-  // Verifica se tem alguém logado
-  estaLogado(): boolean {
-    if (!this.usuario) {
-      const salvo = localStorage.getItem('usuario');
-      this.usuario = salvo ? JSON.parse(salvo) : null;
+  // Função para verificar se o usuário está autenticado
+  isAuthenticated(): boolean {
+    if (!this.usuarioLogado) {
+      const user = localStorage.getItem('usuario');
+      this.usuarioLogado = user ? JSON.parse(user) : null;
     }
-    return !!this.usuario;
+    return !!this.usuarioLogado;
   }
 
-  // Retorna os dados do usuário logado
-  getUsuario() {
-    if (!this.usuario) {
-      const salvo = localStorage.getItem('usuario');
-      this.usuario = salvo ? JSON.parse(salvo) : null;
-    }
-    return this.usuario;
+  // Função para obter o perfil do usuário (tipo)
+  getPerfilUsuario(): string {
+    return this.isAuthenticated() ? this.usuarioLogado.tipo : '';
   }
 
-  // Pega o token de autenticação
-  getToken(): string | null {
-    return this.usuario ? this.usuario.token : null;
+  // Função para cadastrar um novo cliente
+  cadastrarCliente(nome: string, email: string, senha: string, tipo: string): Observable<any> {
+    const novoCliente = { nome, email, senha, tipo };
+
+    // Envia o novo cliente para o json-server
+    return this.http.post(this.apiUrl, novoCliente);
   }
 }
