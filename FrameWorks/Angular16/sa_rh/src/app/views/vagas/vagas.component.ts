@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Vaga } from 'src/app/models/vaga.model';
-import { VagasService } from 'src/app/services/vagas.service';
+import { VagasService } from 'src/app/core/services/vagas.service';
 
 @Component({
   selector: 'app-vagas',
@@ -12,7 +12,7 @@ import { VagasService } from 'src/app/services/vagas.service';
 export class VagasComponent implements OnInit {
 public vagas: Vaga[] = []; //vetor para armazenar as vagas do BD
 
-constructor(private _vagasService: VagasService){}
+constructor(@Inject(VagasService) private _vagasService: VagasService){}
 //injeta o serviço de vagas dentro do componente
 
 ngOnInit(): void {

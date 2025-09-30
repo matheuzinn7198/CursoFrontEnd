@@ -1,21 +1,21 @@
 {
   "vagas": [
     {
-      "id": "7c94",
-      "_id": 0,
-      "_nome": "",
-      "_foto": "",
-      "_descricao": "",
-      "_salario": 0
+      "id": "1865",
+      "nome": "Gerente ",
+      "foto": "",
+      "descricao": "Ter noção kkkk",
+      "salario": "10.000"
     }
   ],
   "curriculos": [
     {
-      "_nome":"Nome...",
-      "_idade":"",
-      "_email":"",
-      "_experiencias":"",
-      "habilidades":"" 
+      "id": "1589",
+      "nome": "Marco Antonio",
+      "idade": "17",
+      "linkedin": "marco404",
+      "github": "marquinhos_fullstack",
+      "experiencia": "experiente em todas as areas!!! 😎"
     }
   ]
 }
