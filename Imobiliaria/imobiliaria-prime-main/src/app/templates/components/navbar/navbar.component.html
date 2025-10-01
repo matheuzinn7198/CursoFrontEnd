@@ -1,7 +1,10 @@
 <!-- header.component.html -->
 <header class="navbar">
   <div class="container">
-    <a routerLink="/" class="logo-text">Imobiliária Prime</a>
+    <a routerLink="/" class="logo-text" style="display: flex; align-items: center;">
+      <img src="data:image/svg+xml;utf8,<svg width='40' height='40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' fill='white'/><text x='20' y='25' font-size='16' text-anchor='middle' fill='black'>🏠</text></svg>" alt="Logo Imobiliária" style="height: 40px; margin-right: 10px;">
+      <span style="color: white; font-weight: bold;">Imobiliária Prime</span>
+    </a>
 
     <!-- Navegação principal: tudo em linha, SEM .collapse -->
     <nav class="navbar-nav">
@@ -12,7 +15,7 @@
         routerLink="/home"
         routerLinkActive="active"
       >
-       Hotéis
+       Imóveis
       </a>
 
       <a
