@@ -1,0 +1,49 @@
+@import '../styles.scss';
+
+
+:host {
+	font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+	background: linear-gradient(135deg, #f8f9fa 0%, #e6fff5 100%);
+	min-height: 100vh;
+	display: block;
+}
+
+.container-fluid {
+	margin: 2rem auto;
+    max-width: 95%;
+	background: $cor-fundo;
+	border-radius: 18px;
+	box-shadow: 0 8px 32px rgba(0, 155, 119, 0.12);
+	padding: 2.5rem 2rem;
+	animation: fadeInUp 0.8s ease;
+}
+
+// Animação para transição de páginas
+router-outlet ~ * {
+	animation: fadeInUp 0.8s ease;
+}
+
+// Scrollbar customizada
+::-webkit-scrollbar {
+	width: 8px;
+	background: #e6fff5;
+}
+::-webkit-scrollbar-thumb {
+	background: $cor-primaria;
+	border-radius: 8px;
+}
+
+// Responsivo
+@media (max-width: 900px) {
+	.container-fluid {
+		max-width: 98vw;
+		padding: 1.2rem 0.5rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.container-fluid {
+		padding: 0.5rem 0.2rem;
+		border-radius: 10px;
+	}
+}

@@ -1,0 +1,44 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Carlos Corretor",
+      "email": "corretor@prime.com",
+      "senha": "123",
+      "tipo": "corretor"
+    },
+    {
+      "id": "2",
+      "nome": "Ana Cliente",
+      "email": "cliente@email.com",
+      "senha": "123",
+      "tipo": "cliente"
+    },
+    {
+      "id": "3",
+      "nome": "Pedro Cliente",
+      "email": "pedro@email.com",
+      "senha": "123",
+      "tipo": "cliente"
+    }
+  ],
+  "imoveis": [
+    {
+      "id": "c334",
+      "titulo": "Minha Nova Casa",
+      "tipo": "Casa",
+      "cidade": "Limeira (SP)",
+      "preco": 5000000,
+      "descricao": "A melhor casa para você!!!",
+      "imagemUrl": "https://cdn.assets-casacor.tec.br/file/casacor-images-news/2025/02/casa-de-praia-estrutura-madeira-piscina-organica-redario-david-bastos-oka-fotografia-6.webp",
+      "corretorId": 1
+    }
+  ],
+  "interesses": [
+    {
+      "id": "970f",
+      "clienteId": 2,
+      "imovelId": "2"
+    }
+  ]
+}
