@@ -1,13 +1,14 @@
-// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component'; // ← Importe a Home
 
+import { AuthGuard } from './core/auth/guards/auth.guard';
 import { ClienteGuard } from './core/auth/guards/cliente.guard';
 import { ClientePlusGuard } from './core/auth/guards/cliente-plus.guard';
 import { AdminGuard } from './core/auth/guards/admin.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  { path: '', component: HomeComponent }, // ← HOME como rota principal!
 
   {
     path: 'auth',
@@ -15,20 +16,20 @@ const routes: Routes = [
   },
   {
     path: 'cliente',
-    canActivate: [ClienteGuard],
+    canActivate: [AuthGuard, ClienteGuard],
     loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
   },
   {
     path: 'plus',
-    canActivate: [ClientePlusGuard],
+    canActivate: [AuthGuard, ClientePlusGuard],
     loadChildren: () => import('./cliente-plus/cliente-plus.module').then(m => m.ClientePlusModule)
   },
   {
     path: 'admin',
-    canActivate: [AdminGuard],
+    canActivate: [AuthGuard, AdminGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
-  { path: '**', redirectTo: '/auth/login' }
+  { path: '**', redirectTo: '' } // ← Volta para Home em rotas inválidas
 ];
 
 @NgModule({
