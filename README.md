@@ -2,8 +2,6 @@
 
 📚 **Repositório oficial do curso de desenvolvimento Front-End**, com foco em fundamentos da web, boas práticas de responsividade e construção de interfaces modernas e acessíveis.
 
-🔗 [Acesse o repositório no GitHub](https://github.com/matheuzinn7198/CursoFrontEnd.git)
-
 ---
 
 ## 🌐 Introdução ao Desenvolvimento Web
